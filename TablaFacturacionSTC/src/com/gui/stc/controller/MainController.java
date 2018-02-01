@@ -1,6 +1,8 @@
 package com.gui.stc.controller;
 
+import java.lang.reflect.Array;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import com.gui.stc.model.DeclaracionComisiones;
@@ -91,7 +93,29 @@ public class MainController implements Initializable{
 	
 		total.setText(equipoComisionado);
 		ValidarTxtFvacio textFieldVacio = new ValidarTxtFvacio();
-		System.out.println(textFieldVacio.revisarVacio(valorTelef2));
+		int celda2 = (textFieldVacio.revisarVacio(valorTelef2));
+		int celda3 = (textFieldVacio.revisarVacio(valorTelef3));
+		int celda4 = (textFieldVacio.revisarVacio(valorTelef4));
+		int celda5 = (textFieldVacio.revisarVacio(valorTelef5));
+		int celda6 = (textFieldVacio.revisarVacio(valorTelef6));
+		int celda7 = (textFieldVacio.revisarVacio(valorTelef7));
+		int celda8 = (textFieldVacio.revisarVacio(valorTelef8));
+
+		ArrayList<Integer> celdasVacias = new ArrayList<>();
+		celdasVacias.add(celda2);
+		celdasVacias.add(celda3);
+		celdasVacias.add(celda4);
+		celdasVacias.add(celda5);
+		celdasVacias.add(celda6);
+		celdasVacias.add(celda7);
+		celdasVacias.add(celda8);
+		
+		
+		for(int i = 0; i <celdasVacias.size() ; i++ ) {
+			System.out.println(celdasVacias);
+		}
+		 
+		
 		
 	}
 	
