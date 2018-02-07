@@ -1,5 +1,6 @@
 package com.gui.stc.model;
 
+
 import javafx.scene.control.Spinner;
 import javafx.scene.control.TextField;
 
@@ -7,13 +8,15 @@ public class GenerarDescuento {
 	
 	public int  DescuentoComision(TextField  valortxtf, Spinner<Integer> cantidad ) {
 		
+
 		DeclaracionComisiones Telefono1 = new DeclaracionComisiones();
-		
 		
 		int valorTelefono = Integer.parseInt(valortxtf.getText());
 		
 		Telefono1.setTelefono1(valorTelefono);
+	
 		int comision = 0;
+
 		
 		if (Telefono1.getTelefono1()> Telefono1.getINI_COMISION_1() &&
 				Telefono1.getTelefono1() < Telefono1.getFIN_COMISION_1() ) {

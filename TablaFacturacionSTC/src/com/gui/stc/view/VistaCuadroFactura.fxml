@@ -96,14 +96,14 @@
             <TextField fx:id="valorTelef6" GridPane.columnIndex="3" GridPane.rowIndex="2" />
             <TextField fx:id="valorTelef7" GridPane.columnIndex="3" GridPane.rowIndex="3" />
             <TextField fx:id="valorTelef8" GridPane.columnIndex="3" GridPane.rowIndex="4" />
-            <Spinner fx:id="SPuno" initialValue="1" max="10" min="1" prefWidth="60.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <Spinner fx:id="SPdos" initialValue="1" max="10" min="1" prefWidth="60.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-            <Spinner fx:id="SPtres" initialValue="1" max="10" min="1" prefWidth="60.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-            <Spinner fx:id="SPcuatro" initialValue="1" max="10" min="1" prefWidth="60.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-            <Spinner fx:id="SPcinco" initialValue="1" max="10" min="1" prefWidth="60.0" GridPane.columnIndex="4" GridPane.rowIndex="1" />
-            <Spinner fx:id="SPseis" initialValue="1" max="10" min="1" prefWidth="60.0" GridPane.columnIndex="4" GridPane.rowIndex="2" />
-            <Spinner fx:id="SPsiete" initialValue="1" max="10" min="1" prefWidth="60.0" GridPane.columnIndex="4" GridPane.rowIndex="3" />
-            <Spinner fx:id="SPocho" initialValue="1" max="10" min="1" prefWidth="60.0" GridPane.columnIndex="4" GridPane.rowIndex="4" />
+            <Spinner fx:id="SPuno" initialValue="0" max="10" min="0" prefWidth="60.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <Spinner fx:id="SPdos" initialValue="0" max="10" min="0" prefWidth="60.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <Spinner fx:id="SPtres" initialValue="0" max="10" min="0" prefWidth="60.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <Spinner fx:id="SPcuatro" initialValue="0" max="10" min="0" prefWidth="60.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <Spinner fx:id="SPcinco" initialValue="0" max="10" min="0" prefWidth="60.0" GridPane.columnIndex="4" GridPane.rowIndex="1" />
+            <Spinner fx:id="SPseis" initialValue="0" max="10" min="0" prefWidth="60.0" GridPane.columnIndex="4" GridPane.rowIndex="2" />
+            <Spinner fx:id="SPsiete" initialValue="0" max="10" min="0" prefWidth="60.0" GridPane.columnIndex="4" GridPane.rowIndex="3" />
+            <Spinner fx:id="SPocho" initialValue="0" max="10" min="0" prefWidth="60.0" GridPane.columnIndex="4" GridPane.rowIndex="4" />
             <Separator orientation="VERTICAL" prefHeight="200.0" GridPane.columnIndex="2" GridPane.rowIndex="1">
                <GridPane.margin>
                   <Insets top="10.0" />

@@ -1,20 +1,20 @@
 package com.gui.stc.controller;
 
-import java.lang.reflect.Array;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
+import java.util.regex.Pattern;
 
-import com.gui.stc.model.DeclaracionComisiones;
 import com.gui.stc.model.GenerarDescuento;
 import com.gui.stc.model.ValidarTxtFvacio;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.control.Spinner;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.text.Text;
 
 public class MainController implements Initializable{
@@ -83,7 +83,13 @@ public class MainController implements Initializable{
 	
 	public void imprimir () {
 		
-
+		if (valorTelef1.getText().isEmpty()) {
+			Alert empyField = new Alert(AlertType.ERROR);
+			empyField.setTitle("Error en llenado datos");
+			empyField.setHeaderText("Campo Vacio");
+			empyField.setContentText("Revise la infomación ingresada");
+		}
+		
 		GenerarDescuento dcto1 = new GenerarDescuento();
 		System.out.println(dcto1.DescuentoComision(valorTelef1,SPuno )); // obtiene el valor del equipos con el descuento
 		System.out.println(dcto1.valorComision(valorTelef1) + " comision "); // obtiene el valor de la comision
@@ -93,29 +99,28 @@ public class MainController implements Initializable{
 	
 		total.setText(equipoComisionado);
 		ValidarTxtFvacio textFieldVacio = new ValidarTxtFvacio();
-		int celda2 = (textFieldVacio.revisarVacio(valorTelef2));
-		int celda3 = (textFieldVacio.revisarVacio(valorTelef3));
-		int celda4 = (textFieldVacio.revisarVacio(valorTelef4));
-		int celda5 = (textFieldVacio.revisarVacio(valorTelef5));
-		int celda6 = (textFieldVacio.revisarVacio(valorTelef6));
-		int celda7 = (textFieldVacio.revisarVacio(valorTelef7));
-		int celda8 = (textFieldVacio.revisarVacio(valorTelef8));
 
+		ArrayList<Integer> Sim = new ArrayList<>();
 		ArrayList<Integer> celdasVacias = new ArrayList<>();
-		celdasVacias.add(celda2);
-		celdasVacias.add(celda3);
-		celdasVacias.add(celda4);
-		celdasVacias.add(celda5);
-		celdasVacias.add(celda6);
-		celdasVacias.add(celda7);
-		celdasVacias.add(celda8);
+		celdasVacias.add(textFieldVacio.revisarVacio(valorTelef2));
+		celdasVacias.add(textFieldVacio.revisarVacio(valorTelef3));
+		celdasVacias.add(textFieldVacio.revisarVacio(valorTelef4));
+		celdasVacias.add(textFieldVacio.revisarVacio(valorTelef5));
+		celdasVacias.add(textFieldVacio.revisarVacio(valorTelef6));
+		celdasVacias.add(textFieldVacio.revisarVacio(valorTelef7));
+		celdasVacias.add(textFieldVacio.revisarVacio(valorTelef8));
 		
 		
 		for(int i = 0; i <celdasVacias.size() ; i++ ) {
-			System.out.println(celdasVacias);
+			System.out.println(celdasVacias.get(i));
+			if(celdasVacias.get(i) != 0) {
+				Sim.add(celdasVacias.get(i));
+				
+			}
+			
 		}
 		 
-		
+		System.out.println(Sim);
 		
 	}
 	
