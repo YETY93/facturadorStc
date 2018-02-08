@@ -7,15 +7,16 @@ import javafx.scene.control.TextField;
 public class GenerarDescuento {
 	
 	public int  DescuentoComision(TextField  valortxtf, Spinner<Integer> cantidad ) {
+		try {
+			
 		
-
 		DeclaracionComisiones Telefono1 = new DeclaracionComisiones();
 		
 		int valorTelefono = Integer.parseInt(valortxtf.getText());
 		
 		Telefono1.setTelefono1(valorTelefono);
 	
-		int comision = 0;
+		int comision;
 
 		
 		if (Telefono1.getTelefono1()> Telefono1.getINI_COMISION_1() &&
@@ -64,8 +65,14 @@ public class GenerarDescuento {
 			valorTelefono =(Telefono1.getTelefono1() - Telefono1.getCOMISION_9() );
 			comision = Telefono1.getCOMISION_9();
 		}
+		return (valorTelefono * cantidad.getValue());
+		} catch (Exception e) {
+
+
+		}
+
 		
-		 return (valorTelefono * cantidad.getValue());
+		 
 	}
 	
 public int  valorComision(TextField  valortxtf) {
