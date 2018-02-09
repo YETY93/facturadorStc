@@ -57,6 +57,9 @@ public class MainController implements Initializable{
 
 	@FXML
 	private Text total;
+	@FXML
+	private Text iva;
+
 
 
 
@@ -106,16 +109,22 @@ public class MainController implements Initializable{
 		int valor6= dcto1.DescuentoComision(valorTelef6,SPseis.getValue());
 		int valor7= dcto1.DescuentoComision(valorTelef7,SPsiete.getValue());
 		int valor8= dcto1.DescuentoComision(valorTelef8,SPocho.getValue());
+		
 		// Sc = sin comision
 		int valorEquiposSC = (valor1 + valor2 + valor3 + valor4 + valor5+ valor6
 				+ valor7 + valor8);
+		
 		String equipoComisionado = Integer.toString(valorEquiposSC); // valor mostrado en el texto TOTAL
-	
+		String ivaEquipos = Integer.toString(dcto1.valorIva(valorTelef1, SPuno.getValue()));
+		
+		iva.setText(ivaEquipos);
 		total.setText(equipoComisionado);
+		
 		ValidarTxtFvacio textFieldVacio = new ValidarTxtFvacio();
 
 		ArrayList<Integer> sim = new ArrayList<>();
 		ArrayList<Integer> celdasVacias = new ArrayList<>();
+		
 		celdasVacias.add(textFieldVacio.revisarVacio(valorTelef1));
 		celdasVacias.add(textFieldVacio.revisarVacio(valorTelef2));
 		celdasVacias.add(textFieldVacio.revisarVacio(valorTelef3));

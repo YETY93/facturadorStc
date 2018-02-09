@@ -85,16 +85,13 @@ public class GenerarDescuento {
 	
 public int  valorComision(TextField  valortxtf, int cantidad) {
 		
-		DeclaracionComisiones Telefono1 = new DeclaracionComisiones();
-		
-		//String valorString = valortxtf.getText();
 		int valorTelefono; 
 		int equiposConDescuento;
 		int comision;
 		
 		valorTelefono =  Integer.parseInt(valortxtf.getText());
 		equiposConDescuento = DescuentoComision(valortxtf, cantidad);
-		comision= (valorTelefono - equiposConDescuento);
+		comision= ((valorTelefono * cantidad) - equiposConDescuento);
 		
 		 return comision;
 	}

@@ -38,7 +38,7 @@
                   <Font size="14.0" />
                </font>
             </Text>
-            <Text boundsType="LOGICAL_VERTICAL_CENTER" strokeType="OUTSIDE" strokeWidth="0.0" text="\$0" textAlignment="CENTER" wrappingWidth="138.13671875" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="1">
+            <Text fx:id="iva" boundsType="LOGICAL_VERTICAL_CENTER" strokeType="OUTSIDE" strokeWidth="0.0" text="\$0" textAlignment="CENTER" wrappingWidth="138.13671875" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="1">
                <font>
                   <Font size="14.0" />
                </font>
