@@ -80,7 +80,7 @@ public class MainController implements Initializable{
 	
 	
 	public void imprimir () {
-		
+		/*
 		// Mensaje de no es numero entero
 		validarTxtFdEntero prueba = new validarTxtFdEntero(); 
 		prueba.verificarEntero(valorTelef1);
@@ -91,19 +91,21 @@ public class MainController implements Initializable{
 		prueba.verificarEntero(valorTelef6);
 		prueba.verificarEntero(valorTelef7);
 		prueba.verificarEntero(valorTelef8);
+		*/
 		
 		GenerarDescuento dcto1 = new GenerarDescuento();
-		System.out.println(dcto1.DescuentoComision(valorTelef1,SPuno )); // obtiene el valor del equipos con el descuento
-		System.out.println(dcto1.valorComision(valorTelef1) + " comision "); // obtiene el valor de la comision
 		
-		int valor1 = dcto1.DescuentoComision(valorTelef1,SPuno);
-		int valor2= dcto1.DescuentoComision(valorTelef2,SPdos);
-		int valor3= dcto1.DescuentoComision(valorTelef3,SPtres);
-		int valor4= dcto1.DescuentoComision(valorTelef4,SPcuatro);
-		int valor5= dcto1.DescuentoComision(valorTelef5,SPcinco);
-		int valor6= dcto1.DescuentoComision(valorTelef6,SPseis);
-		int valor7= dcto1.DescuentoComision(valorTelef7,SPsiete);
-		int valor8= dcto1.DescuentoComision(valorTelef8,SPocho);
+		System.out.println(dcto1.DescuentoComision(valorTelef1,SPuno.getValue() )); // obtiene el valor del equipos con el descuento
+		System.out.println(dcto1.valorComision(valorTelef1,SPuno.getValue() ) + " comision "); // obtiene el valor de la comision
+		
+		int valor1 = dcto1.DescuentoComision(valorTelef1,SPuno.getValue());
+		int valor2= dcto1.DescuentoComision(valorTelef2,SPdos.getValue());
+		int valor3= dcto1.DescuentoComision(valorTelef3,SPtres.getValue());
+		int valor4= dcto1.DescuentoComision(valorTelef4,SPcuatro.getValue());
+		int valor5= dcto1.DescuentoComision(valorTelef5,SPcinco.getValue());
+		int valor6= dcto1.DescuentoComision(valorTelef6,SPseis.getValue());
+		int valor7= dcto1.DescuentoComision(valorTelef7,SPsiete.getValue());
+		int valor8= dcto1.DescuentoComision(valorTelef8,SPocho.getValue());
 		// Sc = sin comision
 		int valorEquiposSC = (valor1 + valor2 + valor3 + valor4 + valor5+ valor6
 				+ valor7 + valor8);
