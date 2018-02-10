@@ -31,7 +31,7 @@ public class MainAplicationSTC extends Application {
 			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			primaryStage.getIcons().add(new Image("/com/gui/stc/icon/iconStc.png"));
 			primaryStage.setScene(scene);
-			primaryStage.setTitle("Cuadro de facturascion");
+			primaryStage.setTitle("Cuadro de facturacion");
 			primaryStage.show();
 		} catch(Exception e) {
 			e.printStackTrace();

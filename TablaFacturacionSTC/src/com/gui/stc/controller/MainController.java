@@ -3,6 +3,8 @@ package com.gui.stc.controller;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
+
+import com.gui.stc.model.AlertaLimiteFactura;
 import com.gui.stc.model.GenerarDescuento;
 import com.gui.stc.model.ValidarTxtFvacio;
 import com.gui.stc.model.validarTxtFdEntero;
@@ -113,6 +115,8 @@ public class MainController implements Initializable{
 		// Sc = sin comision
 		int valorEquiposSC = (valor1 + valor2 + valor3 + valor4 + valor5+ valor6
 				+ valor7 + valor8);
+		AlertaLimiteFactura validarTotal = new AlertaLimiteFactura();
+		validarTotal.alertaValor(valorEquiposSC);
 		
 		String equipoComisionado = Integer.toString(valorEquiposSC); // valor mostrado en el texto TOTAL
 		String ivaEquipos = Integer.toString(dcto1.valorIva(valorTelef1, SPuno.getValue()));
