@@ -1,27 +1,29 @@
 package com.gui.stc.model;
 
 
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Spinner;
 import javafx.scene.control.TextField;
 
 public class GenerarDescuento {
 	
 	public int  DescuentoComision(TextField  valortxtf, int cantidad ) {
-
+		
 		
 		DeclaracionComisiones Telefono1 = new DeclaracionComisiones();
 		
 		// convierte el valor de texto a entero
 		int valorTelefono = Integer.parseInt(valortxtf.getText());
 		
-
-		
-	
-		
 		Telefono1.setTelefono1(valorTelefono);
 	
 		int comision;
+		
+		
+			
 
+		try {
 		
 		if (Telefono1.getTelefono1()> Telefono1.getINI_COMISION_1() &&
 				Telefono1.getTelefono1() < Telefono1.getFIN_COMISION_1() ) {
@@ -72,13 +74,22 @@ public class GenerarDescuento {
 		
 
 		
-		return (valorTelefono * cantidad);
+	}
 		
-
-
+		catch (Exception e) {
+			Alert valorNoVAlido = new Alert(AlertType.WARNING);
+			valorNoVAlido.setTitle("Error númerico");
+			valorNoVAlido.setHeaderText("Número ingresado no valido");
+			valorNoVAlido.setContentText("Idiota escriba bien");
+			valorNoVAlido.show();
+			
+			
+			// TODO: handle exception
 		}
+		return (valorTelefono * cantidad);
 
-		 
+	}
+	
 
 	
 	

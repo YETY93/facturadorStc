@@ -6,21 +6,21 @@ import javafx.scene.control.TextField;
 
 public class validarTxtFdEntero {
 	
-	public int verificarEntero(TextField campotxtF) {
+	public void verificarEntero(TextField campotxtF) {
 		
 		Alert numeroNoValido = new Alert(AlertType.ERROR);
 		try {
 			int x1  = Integer.parseInt(campotxtF.getText());
-			return x1;
+			
 		} catch (NumberFormatException e) {
 			numeroNoValido.setTitle("Numero no valido");
 			numeroNoValido.setHeaderText("Vericar numero ingresado");
 			numeroNoValido.setContentText("Por favor verifique el numero ingresado"
-					+ "\n Error " 
+					+ "\n Inform de este error " 
 					+ e.getMessage());
 			numeroNoValido.show();
 			}
-		return 0;
+		
 	}
 	
 	

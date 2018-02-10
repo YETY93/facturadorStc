@@ -61,6 +61,8 @@ public class MainController implements Initializable{
 	private Text total;
 	@FXML
 	private Text iva;
+	@FXML
+	private Text subTotal;
 
 
 
@@ -85,10 +87,11 @@ public class MainController implements Initializable{
 	
 	
 	public void imprimir () {
-		/*
-		// Mensaje de no es numero entero
+
 		validarTxtFdEntero prueba = new validarTxtFdEntero(); 
 		prueba.verificarEntero(valorTelef1);
+		/*
+		// Mensaje de no es numero entero
 		prueba.verificarEntero(valorTelef2);
 		prueba.verificarEntero(valorTelef3);
 		prueba.verificarEntero(valorTelef4);
@@ -99,7 +102,6 @@ public class MainController implements Initializable{
 		*/
 		
 		GenerarDescuento dcto1 = new GenerarDescuento();
-		
 		System.out.println(dcto1.DescuentoComision(valorTelef1,SPuno.getValue() )); // obtiene el valor del equipos con el descuento
 		System.out.println(dcto1.valorComision(valorTelef1,SPuno.getValue() ) + " comision "); // obtiene el valor de la comision
 		
@@ -113,16 +115,27 @@ public class MainController implements Initializable{
 		int valor8= dcto1.DescuentoComision(valorTelef8,SPocho.getValue());
 		
 		// Sc = sin comision
-		int valorEquiposSC = (valor1 + valor2 + valor3 + valor4 + valor5+ valor6
+		int valorEquiposSC;
+		valorEquiposSC = (valor1 + valor2 + valor3 + valor4 + valor5+ valor6
 				+ valor7 + valor8);
+		
 		AlertaLimiteFactura validarTotal = new AlertaLimiteFactura();
 		validarTotal.alertaValor(valorEquiposSC);
 		
-		String equipoComisionado = Integer.toString(valorEquiposSC); // valor mostrado en el texto TOTAL
-		String ivaEquipos = Integer.toString(dcto1.valorIva(valorTelef1, SPuno.getValue()));
+		int ivaEquipos;
+		ivaEquipos = (dcto1.valorIva(valorTelef1, SPuno.getValue()));
 		
-		iva.setText(ivaEquipos);
+		int subtotalInt; 
+		subtotalInt= (valorEquiposSC - ivaEquipos);
+		
+		String equipoComisionado = Integer.toString(valorEquiposSC); // valor mostrado en el texto TOTAL
+		String ivaEquiposSTR = Integer.toString(ivaEquipos);
+		String subTotalTXT = Integer.toString(subtotalInt);
+		
+
+		iva.setText(ivaEquiposSTR);
 		total.setText(equipoComisionado);
+		subTotal.setText(subTotalTXT);
 		
 		ValidarTxtFvacio textFieldVacio = new ValidarTxtFvacio();
 
