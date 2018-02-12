@@ -7,6 +7,7 @@
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.Spinner?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
@@ -181,15 +182,18 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Label alignment="BASELINE_RIGHT" nodeOrientation="RIGHT_TO_LEFT" prefHeight="66.0" prefWidth="211.0" text="Comisionador de STCOMUNICACIONES">
+            <Label fx:id="titulo" alignment="BASELINE_RIGHT" nodeOrientation="RIGHT_TO_LEFT" prefHeight="66.0" prefWidth="211.0" text="Comisionador">
                <GridPane.margin>
                   <Insets left="10.0" />
                </GridPane.margin>
             </Label>
-            <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="RIGHT">
+            <ImageView fx:id="logostc" fitHeight="47.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="RIGHT">
                <GridPane.margin>
                   <Insets right="20.0" />
                </GridPane.margin>
+               <image>
+                  <Image url="@../icon/logostc.png" />
+               </image>
             </ImageView>
          </children>
       </GridPane>
