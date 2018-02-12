@@ -136,7 +136,7 @@ public class MainController implements Initializable{
 		iva.setText(ivaEquiposSTR);
 		total.setText(equipoComisionado);
 		subTotal.setText(subTotalTXT);
-		
+		/*
 		ValidarTxtFvacio textFieldVacio = new ValidarTxtFvacio();
 
 		ArrayList<Integer> sim = new ArrayList<>();
@@ -166,7 +166,7 @@ public class MainController implements Initializable{
 		}
 		 
 		System.out.println(cantidadSim);
-		
+		*/
 	}
 	
 	

@@ -33,7 +33,7 @@
             <Label text="SUB total" />
             <Label text="IVA" GridPane.rowIndex="1" />
             <Label text="Total" GridPane.rowIndex="2" />
-            <Text boundsType="LOGICAL_VERTICAL_CENTER" strokeType="OUTSIDE" strokeWidth="0.0" text="\$0" textAlignment="CENTER" wrappingWidth="138.13671875" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.valignment="CENTER">
+            <Text fx:id="subTotal" boundsType="LOGICAL_VERTICAL_CENTER" strokeType="OUTSIDE" strokeWidth="0.0" text="\$0" textAlignment="CENTER" wrappingWidth="138.13671875" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.valignment="CENTER">
                <font>
                   <Font size="14.0" />
                </font>
