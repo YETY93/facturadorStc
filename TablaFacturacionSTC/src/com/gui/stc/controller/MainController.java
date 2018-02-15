@@ -105,6 +105,9 @@ public class MainController implements Initializable{
 		System.out.println(dcto1.DescuentoComision(valorTelef1,SPuno.getValue() )); // obtiene el valor del equipos con el descuento
 		System.out.println(dcto1.valorComision(valorTelef1,SPuno.getValue() ) + " comision "); // obtiene el valor de la comision
 		
+		ArrayList<Integer> descuentos = new ArrayList(); 
+		descuentos.add(dcto1.DescuentoComision(valorTelef1,SPuno.getValue()));
+		
 		int valor1 = dcto1.DescuentoComision(valorTelef1,SPuno.getValue());
 		int valor2= dcto1.DescuentoComision(valorTelef2,SPdos.getValue());
 		int valor3= dcto1.DescuentoComision(valorTelef3,SPtres.getValue());
@@ -136,37 +139,7 @@ public class MainController implements Initializable{
 		iva.setText(ivaEquiposSTR);
 		total.setText(equipoComisionado);
 		subTotal.setText(subTotalTXT);
-		/*
-		ValidarTxtFvacio textFieldVacio = new ValidarTxtFvacio();
-
-		ArrayList<Integer> sim = new ArrayList<>();
-		ArrayList<Integer> celdasVacias = new ArrayList<>();
 		
-		celdasVacias.add(textFieldVacio.revisarVacio(valorTelef1));
-		celdasVacias.add(textFieldVacio.revisarVacio(valorTelef2));
-		celdasVacias.add(textFieldVacio.revisarVacio(valorTelef3));
-		celdasVacias.add(textFieldVacio.revisarVacio(valorTelef4));
-		celdasVacias.add(textFieldVacio.revisarVacio(valorTelef5));
-		celdasVacias.add(textFieldVacio.revisarVacio(valorTelef6));
-		celdasVacias.add(textFieldVacio.revisarVacio(valorTelef7));
-		celdasVacias.add(textFieldVacio.revisarVacio(valorTelef8));
-		
-		
-		for(int i = 0; i <celdasVacias.size() ; i++ ) {
-			System.out.println(celdasVacias.get(i));
-			if(celdasVacias.get(i) != 0) {
-				sim.add(celdasVacias.get(i));
-				
-			}	
-		}
-		
-		int cantidadSim = 0;
-		for(int j = 0; j <sim.size() ; j++ ) {
-			cantidadSim = cantidadSim + sim.get(j);
-		}
-		 
-		System.out.println(cantidadSim);
-		*/
 	}
 	
 	

@@ -9,7 +9,16 @@ import javafx.scene.control.TextField;
 public class GenerarDescuento {
 	
 	public int  DescuentoComision(TextField  valortxtf, int cantidad ) {
-		
+		try {
+			if(valortxtf.getText().isEmpty()){
+				valortxtf.setText("0");
+			}
+			
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+			System.out.println("error");
+		}
 		
 		DeclaracionComisiones Telefono1 = new DeclaracionComisiones();
 		
@@ -20,10 +29,6 @@ public class GenerarDescuento {
 	
 		int comision;
 		
-		
-			
-
-		try {
 		
 		if (Telefono1.getTelefono1()> Telefono1.getINI_COMISION_1() &&
 				Telefono1.getTelefono1() < Telefono1.getFIN_COMISION_1() ) {
@@ -72,20 +77,8 @@ public class GenerarDescuento {
 			comision = Telefono1.getCOMISION_9();
 		}
 		
-
 		
-	}
 		
-		catch (Exception e) {
-			Alert valorNoVAlido = new Alert(AlertType.WARNING);
-			valorNoVAlido.setTitle("Error númerico");
-			valorNoVAlido.setHeaderText("Número ingresado no valido");
-			valorNoVAlido.setContentText("Idiota escriba bien");
-			valorNoVAlido.show();
-			
-			
-			// TODO: handle exception
-		}
 		return (valorTelefono * cantidad);
 
 	}
@@ -94,7 +87,7 @@ public class GenerarDescuento {
 	
 	
 	
-public int  valorComision(TextField  valortxtf, int cantidad) {
+	public int  valorComision(TextField  valortxtf, int cantidad) {
 		
 		int valorTelefono; 
 		int equiposConDescuento;
@@ -110,29 +103,26 @@ public int  valorComision(TextField  valortxtf, int cantidad) {
 
 
 
-public int  valorIva(TextField  valortxtf, int cantidad  ) {
-	
-	DeclaracionComisiones Telefono1 = new DeclaracionComisiones();
-	int comision = valorComision(valortxtf, cantidad );
-	
-	//String valorString = valortxtf.getText();
-	int valorTelefono = Integer.parseInt(valortxtf.getText());
-	int valorTelefonoSinIVA = Integer.parseInt(valortxtf.getText());
+	public int valorIva(TextField valortxtf, int cantidad) {
 
-	
+		DeclaracionComisiones Telefono1 = new DeclaracionComisiones();
+		int comision = valorComision(valortxtf, cantidad);
 
-	int iva = 0;
-	if (valorTelefonoSinIVA > 702900) {
-		int valorTElefonComisonado = valorTelefonoSinIVA - comision;
-		iva = (int) ((valorTElefonComisonado * 0.19)/1.19) * cantidad ;
-	}else {
-		iva = (380) * cantidad;
+		// String valorString = valortxtf.getText();
+		int valorTelefono = Integer.parseInt(valortxtf.getText());
+		int valorTelefonoSinIVA = Integer.parseInt(valortxtf.getText());
+
+		int iva = 0;
+		if (valorTelefonoSinIVA > 702900) {
+			int valorTElefonComisonado = valorTelefonoSinIVA - comision;
+			iva = (int) ((valorTElefonComisonado * 0.19) / 1.19) * cantidad;
+			
+		} else {
+			iva = (380) * cantidad;
+		}
+
+		return iva;
 	}
-	
-	
-	return iva;
-}
-
 
 
 }
