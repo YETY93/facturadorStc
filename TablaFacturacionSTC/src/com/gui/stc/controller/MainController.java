@@ -93,16 +93,7 @@ public class MainController implements Initializable{
 
 		validarTxtFdEntero prueba = new validarTxtFdEntero(); 
 		prueba.verificarEntero(valorTelef1);
-		/*
-		// Mensaje de no es numero entero
-		prueba.verificarEntero(valorTelef2);
-		prueba.verificarEntero(valorTelef3);
-		prueba.verificarEntero(valorTelef4);
-		prueba.verificarEntero(valorTelef5);
-		prueba.verificarEntero(valorTelef6);
-		prueba.verificarEntero(valorTelef7);
-		prueba.verificarEntero(valorTelef8);
-		*/
+
 		
 		GenerarDescuento dcto1 = new GenerarDescuento();
 		System.out.println(dcto1.DescuentoComision(valorTelef1,SPuno.getValue() )); // obtiene el valor del equipos con el descuento
@@ -127,7 +118,11 @@ public class MainController implements Initializable{
 			Alert errorAdicionando = new Alert(AlertType.ERROR);
 			errorAdicionando.setTitle("Error en Valor");
 			errorAdicionando.setHeaderText("Error al Ingresar los valores");
-			errorAdicionando.setContentText("Por favor revise los valores ingresados");
+			errorAdicionando.setContentText("Por favor revise los valores ingresados"
+					+ "NOTA:"
+					+ "\n -Revise que no tenga espacios en blanco"
+					+ "\n -Que no tenga literales");
+			errorAdicionando.show();
 			errorAdicionando.show();
 		}
 
@@ -136,6 +131,16 @@ public class MainController implements Initializable{
 		// Sc = sin comision
 		int valorEquiposSC;
 		valorEquiposSC = (valorTotalSuma.totalSumaArray(descuentos));
+		
+		if (valorEquiposSC == 0) {
+			Alert errorNumCero = new Alert(AlertType.INFORMATION);
+			errorNumCero.setTitle("Valor numerico");
+			errorNumCero.setHeaderText("Algun campo vacio o en (0)");
+			errorNumCero.setContentText("Por favor revise los valores ingresados"
+					+ "\n NOTA:"
+					+ "\n 	-Revise que la cantidad sellecionada no sea (0)");
+			errorNumCero.show();
+		}
 		
 		AlertaLimiteFactura validarTotal = new AlertaLimiteFactura();
 		validarTotal.alertaValor(valorEquiposSC);
