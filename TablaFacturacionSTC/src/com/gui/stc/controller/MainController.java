@@ -6,12 +6,15 @@ import java.util.ResourceBundle;
 
 import com.gui.stc.model.AlertaLimiteFactura;
 import com.gui.stc.model.GenerarDescuento;
+import com.gui.stc.model.SumaArrayValores;
 import com.gui.stc.model.ValidarTxtFvacio;
 import com.gui.stc.model.validarTxtFdEntero;
 
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.Spinner;
 import javafx.scene.control.TextField;
@@ -105,22 +108,34 @@ public class MainController implements Initializable{
 		System.out.println(dcto1.DescuentoComision(valorTelef1,SPuno.getValue() )); // obtiene el valor del equipos con el descuento
 		System.out.println(dcto1.valorComision(valorTelef1,SPuno.getValue() ) + " comision "); // obtiene el valor de la comision
 		
+		
+		
 		ArrayList<Integer> descuentos = new ArrayList(); 
-		descuentos.add(dcto1.DescuentoComision(valorTelef1,SPuno.getValue()));
-		
-		int valor1 = dcto1.DescuentoComision(valorTelef1,SPuno.getValue());
-		int valor2= dcto1.DescuentoComision(valorTelef2,SPdos.getValue());
-		int valor3= dcto1.DescuentoComision(valorTelef3,SPtres.getValue());
-		int valor4= dcto1.DescuentoComision(valorTelef4,SPcuatro.getValue());
-		int valor5= dcto1.DescuentoComision(valorTelef5,SPcinco.getValue());
-		int valor6= dcto1.DescuentoComision(valorTelef6,SPseis.getValue());
-		int valor7= dcto1.DescuentoComision(valorTelef7,SPsiete.getValue());
-		int valor8= dcto1.DescuentoComision(valorTelef8,SPocho.getValue());
-		
+		try {
+			descuentos.add(dcto1.DescuentoComision(valorTelef1,SPuno.getValue()));
+			descuentos.add(dcto1.DescuentoComision(valorTelef2,SPdos.getValue()));
+			descuentos.add(dcto1.DescuentoComision(valorTelef3,SPtres.getValue()));
+			descuentos.add(dcto1.DescuentoComision(valorTelef4,SPcuatro.getValue()));
+			descuentos.add(dcto1.DescuentoComision(valorTelef5,SPcinco.getValue()));
+			descuentos.add(dcto1.DescuentoComision(valorTelef6,SPseis.getValue()));
+			descuentos.add(dcto1.DescuentoComision(valorTelef7,SPsiete.getValue()));
+			descuentos.add(dcto1.DescuentoComision(valorTelef8,SPocho.getValue()));
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+			Alert errorAdicionando = new Alert(AlertType.ERROR);
+			errorAdicionando.setTitle("Error en Valor");
+			errorAdicionando.setHeaderText("Error al Ingresar los valores");
+			errorAdicionando.setContentText("Por favor revise los valores ingresados");
+			errorAdicionando.show();
+		}
+
+
+		SumaArrayValores valorTotalSuma = new SumaArrayValores();
 		// Sc = sin comision
 		int valorEquiposSC;
-		valorEquiposSC = (valor1 + valor2 + valor3 + valor4 + valor5+ valor6
-				+ valor7 + valor8);
+		valorEquiposSC = (valorTotalSuma.totalSumaArray(descuentos));
 		
 		AlertaLimiteFactura validarTotal = new AlertaLimiteFactura();
 		validarTotal.alertaValor(valorEquiposSC);
