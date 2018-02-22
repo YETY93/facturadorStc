@@ -127,7 +127,6 @@ public class GenerarDescuento {
 		valorSimCard = 2380;
 		valorMaximoIvaCelular = 72850;
 		
-		
 		int iva = 0;
 		if ((valorTelefonoSinIVA - valorSimCard) > valorMaximoIvaCelular) {
 			int valorTElefonComisonado = valorTelefonoSinIVA - comision;
