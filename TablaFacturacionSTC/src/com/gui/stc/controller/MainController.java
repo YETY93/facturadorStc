@@ -115,6 +115,7 @@ public class MainController implements Initializable{
 		} catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();
+			
 			Alert errorAdicionando = new Alert(AlertType.ERROR);
 			errorAdicionando.setTitle("Error en Valor");
 			errorAdicionando.setHeaderText("Error al Ingresar los valores");
@@ -123,12 +124,25 @@ public class MainController implements Initializable{
 					+ "\n -Revise que no tenga espacios en blanco"
 					+ "\n -Que no tenga literales");
 			errorAdicionando.show();
-			errorAdicionando.show();
 		}
 
-
+		ArrayList<Integer>ivasList	= new ArrayList();
+		ivasList.add(dcto1.valorIva(valorTelef1,SPuno.getValue()));
+		ivasList.add(dcto1.valorIva(valorTelef2,SPdos.getValue()));
+		ivasList.add(dcto1.valorIva(valorTelef3,SPtres.getValue()));
+		ivasList.add(dcto1.valorIva(valorTelef4,SPcuatro.getValue()));
+		ivasList.add(dcto1.valorIva(valorTelef5,SPcinco.getValue()));
+		ivasList.add(dcto1.valorIva(valorTelef6,SPseis.getValue()));
+		ivasList.add(dcto1.valorIva(valorTelef7,SPsiete.getValue()));
+		ivasList.add(dcto1.valorIva(valorTelef8,SPocho.getValue()));
+		
+		
+		// sumas de arrays precios e ivas
+		
 		SumaArrayValores valorTotalSuma = new SumaArrayValores();
-		// Sc = sin comision
+		SumaArrayValores valorTotalIvas = new SumaArrayValores();
+		
+		
 		int valorEquiposSC;
 		valorEquiposSC = (valorTotalSuma.totalSumaArray(descuentos));
 		
@@ -142,11 +156,15 @@ public class MainController implements Initializable{
 			errorNumCero.show();
 		}
 		
+	
+		
+		
+		
 		AlertaLimiteFactura validarTotal = new AlertaLimiteFactura();
 		validarTotal.alertaValor(valorEquiposSC);
 		
 		int ivaEquipos;
-		ivaEquipos = (dcto1.valorIva(valorTelef1, SPuno.getValue()));
+		ivaEquipos = (valorTotalIvas.totalSumaArray(ivasList));
 		
 		int subtotalInt; 
 		subtotalInt= (valorEquiposSC - ivaEquipos);
