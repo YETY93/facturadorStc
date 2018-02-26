@@ -1,6 +1,7 @@
 package com.gui.stc.controller;
 
 import java.net.URL;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
@@ -169,14 +170,14 @@ public class MainController implements Initializable{
 		int subtotalInt; 
 		subtotalInt= (valorEquiposSC - ivaEquipos);
 		
-		String equipoComisionado = Integer.toString(valorEquiposSC); // valor mostrado en el texto TOTAL
-		String ivaEquiposSTR = Integer.toString(ivaEquipos);
-		String subTotalTXT = Integer.toString(subtotalInt);
 		
-
-		iva.setText(ivaEquiposSTR);
-		total.setText(equipoComisionado);
-		subTotal.setText(subTotalTXT);
+		// FORMATEO DE VALORES A SEPARADOS POR (.)
+		DecimalFormat formatMil = new DecimalFormat("###,###.##");
+		
+		// valores mostrados en pantalla
+		subTotal.setText("$ " + formatMil.format(subtotalInt) );
+		iva.setText("$ " + formatMil.format(ivaEquipos));
+		total.setText("$ " + formatMil.format(valorEquiposSC));
 		
 	}
 	
