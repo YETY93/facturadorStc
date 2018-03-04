@@ -3,31 +3,25 @@ package com.gui.stc.model;
 public class DeclaracionComisiones {
 	
 	private int telefono1;
-	private int telefono2;
-	private int telefono3;
-	private int telefono4;
-	private int telefono5;
-	private int telefono6;
-	private int telefono7;
-	private int telefono8;
+
 	
 	private final int INI_COMISION_1 = 0;
 	private final int FIN_COMISION_1 = 90480;
-	private final int INI_COMISION_2 = 90480;
+	private final int INI_COMISION_2 = 90481;
 	private final int FIN_COMISION_2 = 10560;
-	private final int INI_COMISION_3 = 10560;
+	private final int INI_COMISION_3 = 10561;
 	private final int FIN_COMISION_3 = 120640;
-	private final int INI_COMISION_4 = 120640;
+	private final int INI_COMISION_4 = 120641;
 	private final int FIN_COMISION_4 = 160800;
-	private final int INI_COMISION_5 = 160800;
+	private final int INI_COMISION_5 = 160801;
 	private final int FIN_COMISION_5 = 399900;
-	private final int INI_COMISION_6 = 399900;
+	private final int INI_COMISION_6 = 399901;
 	private final int FIN_COMISION_6 = 550900;
-	private final int INI_COMISION_7 = 550900;
+	private final int INI_COMISION_7 = 550901;
 	private final int FIN_COMISION_7 = 603200;
-	private final int INI_COMISION_8 = 603200;
+	private final int INI_COMISION_8 = 603201;
 	private final int FIN_COMISION_8 = 814320;
-	private final int INI_COMISION_9 = 814320;
+	private final int INI_COMISION_9 = 814321;
 	
 	
 	private final int COMISION_1 = 7500;
@@ -49,48 +43,7 @@ public class DeclaracionComisiones {
 	public void setTelefono1(int telefono1) {
 		this.telefono1 = telefono1;
 	}
-	public int getTelefono2() {
-		return telefono2;
-	}
-	public void setTelefono2(int telefono2) {
-		this.telefono2 = telefono2;
-	}
-	public int getTelefono3() {
-		return telefono3;
-	}
-	public void setTelefono3(int telefono3) {
-		this.telefono3 = telefono3;
-	}
-	public int getTelefono4() {
-		return telefono4;
-	}
-	public void setTelefono4(int telefono4) {
-		this.telefono4 = telefono4;
-	}
-	public int getTelefono5() {
-		return telefono5;
-	}
-	public void setTelefono5(int telefono5) {
-		this.telefono5 = telefono5;
-	}
-	public int getTelefono6() {
-		return telefono6;
-	}
-	public void setTelefono6(int telefono6) {
-		this.telefono6 = telefono6;
-	}
-	public int getTelefono7() {
-		return telefono7;
-	}
-	public void setTelefono7(int telefono7) {
-		this.telefono7 = telefono7;
-	}
-	public int getTelefono8() {
-		return telefono8;
-	}
-	public void setTelefono8(int telefono8) {
-		this.telefono8 = telefono8;
-	}
+
 	public int getCOMISION_1() {
 		return COMISION_1;
 	}

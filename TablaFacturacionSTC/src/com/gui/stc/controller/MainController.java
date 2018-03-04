@@ -1,25 +1,29 @@
 package com.gui.stc.controller;
 
 import java.net.URL;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import com.gui.stc.model.AlertaLimiteFactura;
 import com.gui.stc.model.GenerarDescuento;
-import com.gui.stc.model.ValidarTxtFvacio;
+import com.gui.stc.model.SumaArrayValores;
+import com.gui.stc.model.preciosDirectos;
 import com.gui.stc.model.validarTxtFdEntero;
-
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
+import javafx.scene.control.RadioButton;
 import javafx.scene.control.Spinner;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
 
-public class MainController implements Initializable{
+public class MainController implements Initializable {
 
-	
 	@FXML
 	private Spinner<Integer> SPuno;
 	@FXML
@@ -36,9 +40,9 @@ public class MainController implements Initializable{
 	private Spinner<Integer> SPsiete;
 	@FXML
 	private Spinner<Integer> SPocho;
-	
+
 	@FXML
-	private TextField valorTelef1; 
+	private TextField valorTelef1;
 	@FXML
 	private TextField valorTelef2;
 	@FXML
@@ -56,6 +60,8 @@ public class MainController implements Initializable{
 
 	@FXML
 	private Button imprime;
+	@FXML
+	private Button btn_salir;
 
 	@FXML
 	private Text total;
@@ -64,9 +70,10 @@ public class MainController implements Initializable{
 	@FXML
 	private Text subTotal;
 
-
-
-
+	@FXML
+	private RadioButton realizarDesctoSub;
+	@FXML
+	private RadioButton comisionDirecta;
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
@@ -81,95 +88,165 @@ public class MainController implements Initializable{
 		SPseis.setEditable(true);
 		SPsiete.setEditable(true);
 		SPocho.setEditable(true);
-		
-	}
-	
-	
-	
-	public void imprimir () {
 
-		validarTxtFdEntero prueba = new validarTxtFdEntero(); 
+	}
+
+	public void generarDescuentoSub() {
+
+		validarTxtFdEntero prueba = new validarTxtFdEntero();
 		prueba.verificarEntero(valorTelef1);
-		/*
-		// Mensaje de no es numero entero
-		prueba.verificarEntero(valorTelef2);
-		prueba.verificarEntero(valorTelef3);
-		prueba.verificarEntero(valorTelef4);
-		prueba.verificarEntero(valorTelef5);
-		prueba.verificarEntero(valorTelef6);
-		prueba.verificarEntero(valorTelef7);
-		prueba.verificarEntero(valorTelef8);
-		*/
-		
+
 		GenerarDescuento dcto1 = new GenerarDescuento();
-		System.out.println(dcto1.DescuentoComision(valorTelef1,SPuno.getValue() )); // obtiene el valor del equipos con el descuento
-		System.out.println(dcto1.valorComision(valorTelef1,SPuno.getValue() ) + " comision "); // obtiene el valor de la comision
 		
-		int valor1 = dcto1.DescuentoComision(valorTelef1,SPuno.getValue());
-		int valor2= dcto1.DescuentoComision(valorTelef2,SPdos.getValue());
-		int valor3= dcto1.DescuentoComision(valorTelef3,SPtres.getValue());
-		int valor4= dcto1.DescuentoComision(valorTelef4,SPcuatro.getValue());
-		int valor5= dcto1.DescuentoComision(valorTelef5,SPcinco.getValue());
-		int valor6= dcto1.DescuentoComision(valorTelef6,SPseis.getValue());
-		int valor7= dcto1.DescuentoComision(valorTelef7,SPsiete.getValue());
-		int valor8= dcto1.DescuentoComision(valorTelef8,SPocho.getValue());
 		
-		// Sc = sin comision
+		ArrayList<Integer> descuentos = new ArrayList<Integer>();
+		try {
+			descuentos.add(dcto1.DescuentoComision(valorTelef1, SPuno.getValue()));
+			descuentos.add(dcto1.DescuentoComision(valorTelef2, SPdos.getValue()));
+			descuentos.add(dcto1.DescuentoComision(valorTelef3, SPtres.getValue()));
+			descuentos.add(dcto1.DescuentoComision(valorTelef4, SPcuatro.getValue()));
+			descuentos.add(dcto1.DescuentoComision(valorTelef5, SPcinco.getValue()));
+			descuentos.add(dcto1.DescuentoComision(valorTelef6, SPseis.getValue()));
+			descuentos.add(dcto1.DescuentoComision(valorTelef7, SPsiete.getValue()));
+			descuentos.add(dcto1.DescuentoComision(valorTelef8, SPocho.getValue()));
+
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+
+			Alert errorAdicionando = new Alert(AlertType.ERROR);
+			errorAdicionando.setTitle("Error en Valor");
+			errorAdicionando.setHeaderText("Error al Ingresar los valores");
+			errorAdicionando.setContentText("Por favor revise los valores ingresados" + "NOTA:"
+					+ "\n -Revise que no tenga espacios en blanco" + "\n -Que no tenga literales");
+			errorAdicionando.show();
+		}
+
+		ArrayList<Integer> ivasList = new ArrayList<Integer>();
+		ivasList.add(dcto1.valorIva(valorTelef1, SPuno.getValue()));
+		ivasList.add(dcto1.valorIva(valorTelef2, SPdos.getValue()));
+		ivasList.add(dcto1.valorIva(valorTelef3, SPtres.getValue()));
+		ivasList.add(dcto1.valorIva(valorTelef4, SPcuatro.getValue()));
+		ivasList.add(dcto1.valorIva(valorTelef5, SPcinco.getValue()));
+		ivasList.add(dcto1.valorIva(valorTelef6, SPseis.getValue()));
+		ivasList.add(dcto1.valorIva(valorTelef7, SPsiete.getValue()));
+		ivasList.add(dcto1.valorIva(valorTelef8, SPocho.getValue()));
+
+		// sumas de arrays precios e ivas
+
+		SumaArrayValores valorTotalSuma = new SumaArrayValores();
+		SumaArrayValores valorTotalIvas = new SumaArrayValores();
+
 		int valorEquiposSC;
-		valorEquiposSC = (valor1 + valor2 + valor3 + valor4 + valor5+ valor6
-				+ valor7 + valor8);
-		
+		valorEquiposSC = (valorTotalSuma.totalSumaArray(descuentos));
+
+		if (valorEquiposSC == 0) {
+			Alert errorNumCero = new Alert(AlertType.INFORMATION);
+			errorNumCero.setTitle("Valor numerico");
+			errorNumCero.setHeaderText("Algun campo vacio o en (0)");
+			errorNumCero.setContentText("Por favor revise los valores ingresados" + "\n NOTA:"
+					+ "\n 	-Revise que la cantidad sellecionada no sea (0)");
+			errorNumCero.show();
+		}
+
 		AlertaLimiteFactura validarTotal = new AlertaLimiteFactura();
 		validarTotal.alertaValor(valorEquiposSC);
-		
+
 		int ivaEquipos;
-		ivaEquipos = (dcto1.valorIva(valorTelef1, SPuno.getValue()));
-		
-		int subtotalInt; 
-		subtotalInt= (valorEquiposSC - ivaEquipos);
-		
-		String equipoComisionado = Integer.toString(valorEquiposSC); // valor mostrado en el texto TOTAL
-		String ivaEquiposSTR = Integer.toString(ivaEquipos);
-		String subTotalTXT = Integer.toString(subtotalInt);
-		
+		ivaEquipos = (valorTotalIvas.totalSumaArray(ivasList));
 
-		iva.setText(ivaEquiposSTR);
-		total.setText(equipoComisionado);
-		subTotal.setText(subTotalTXT);
-		/*
-		ValidarTxtFvacio textFieldVacio = new ValidarTxtFvacio();
+		int subtotalInt;
+		subtotalInt = (valorEquiposSC - ivaEquipos);
 
-		ArrayList<Integer> sim = new ArrayList<>();
-		ArrayList<Integer> celdasVacias = new ArrayList<>();
-		
-		celdasVacias.add(textFieldVacio.revisarVacio(valorTelef1));
-		celdasVacias.add(textFieldVacio.revisarVacio(valorTelef2));
-		celdasVacias.add(textFieldVacio.revisarVacio(valorTelef3));
-		celdasVacias.add(textFieldVacio.revisarVacio(valorTelef4));
-		celdasVacias.add(textFieldVacio.revisarVacio(valorTelef5));
-		celdasVacias.add(textFieldVacio.revisarVacio(valorTelef6));
-		celdasVacias.add(textFieldVacio.revisarVacio(valorTelef7));
-		celdasVacias.add(textFieldVacio.revisarVacio(valorTelef8));
-		
-		
-		for(int i = 0; i <celdasVacias.size() ; i++ ) {
-			System.out.println(celdasVacias.get(i));
-			if(celdasVacias.get(i) != 0) {
-				sim.add(celdasVacias.get(i));
-				
-			}	
+		// FORMATEO DE VALORES A SEPARADOS POR (.)
+		DecimalFormat formatMil = new DecimalFormat("###,###.##");
+
+		// valores mostrados en pantalla
+		subTotal.setText("$ " + formatMil.format(subtotalInt));
+		iva.setText("$ " + formatMil.format(ivaEquipos));
+		total.setText("$ " + formatMil.format(valorEquiposSC));
+
+	}
+
+	public void valorEquipoButique() {
+		preciosDirectos nuevoCalculo = new preciosDirectos();
+
+		SumaArrayValores sumTotal = new SumaArrayValores();
+
+		ArrayList<Integer> valorIvaEquipos = new ArrayList<Integer>();
+
+		try {
+			valorIvaEquipos.add(nuevoCalculo.validarIva(valorTelef1, SPuno.getValue()));
+			valorIvaEquipos.add(nuevoCalculo.validarIva(valorTelef2, SPdos.getValue()));
+			valorIvaEquipos.add(nuevoCalculo.validarIva(valorTelef3, SPtres.getValue()));
+			valorIvaEquipos.add(nuevoCalculo.validarIva(valorTelef4, SPcuatro.getValue()));
+			valorIvaEquipos.add(nuevoCalculo.validarIva(valorTelef5, SPcinco.getValue()));
+			valorIvaEquipos.add(nuevoCalculo.validarIva(valorTelef6, SPseis.getValue()));
+			valorIvaEquipos.add(nuevoCalculo.validarIva(valorTelef7, SPsiete.getValue()));
+			valorIvaEquipos.add(nuevoCalculo.validarIva(valorTelef8, SPocho.getValue()));
+
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+
+			Alert errorAdicionando = new Alert(AlertType.ERROR);
+			errorAdicionando.setTitle("Error en Valor");
+			errorAdicionando.setHeaderText("Error al Ingresar los valores");
+			errorAdicionando.setContentText("Por favor revise los valores ingresados" + "NOTA:"
+					+ "\n -Revise que no tenga espacios en blanco" + "\n -Que no tenga literales");
+			errorAdicionando.show();
 		}
-		
-		int cantidadSim = 0;
-		for(int j = 0; j <sim.size() ; j++ ) {
-			cantidadSim = cantidadSim + sim.get(j);
-		}
-		 
-		System.out.println(cantidadSim);
-		*/
+
+		ArrayList<Integer> totalEquipos = new ArrayList<Integer>();
+		totalEquipos.add(Integer.parseInt(valorTelef1.getText()));
+		totalEquipos.add(Integer.parseInt(valorTelef2.getText()));
+		totalEquipos.add(Integer.parseInt(valorTelef3.getText()));
+		totalEquipos.add(Integer.parseInt(valorTelef4.getText()));
+		totalEquipos.add(Integer.parseInt(valorTelef5.getText()));
+		totalEquipos.add(Integer.parseInt(valorTelef6.getText()));
+		totalEquipos.add(Integer.parseInt(valorTelef7.getText()));
+		totalEquipos.add(Integer.parseInt(valorTelef8.getText()));
+
+		sumTotal.totalSumaArray(valorIvaEquipos);
+		sumTotal.totalSumaArray(totalEquipos);
+
+		AlertaLimiteFactura validarTotal = new AlertaLimiteFactura();
+		validarTotal.alertaValor(sumTotal.totalSumaArray(totalEquipos));
+
+		int ivaEquipos;
+		ivaEquipos = (sumTotal.totalSumaArray(valorIvaEquipos));
+
+		int subtotalInt;
+		subtotalInt = (sumTotal.totalSumaArray(totalEquipos) - ivaEquipos);
+
+		// FORMATEO DE VALORES A SEPARADOS POR (.)
+		DecimalFormat formatMil = new DecimalFormat("###,###.##");
+
+		// valores mostrados en pantalla
+		subTotal.setText("$ " + formatMil.format(subtotalInt));
+		iva.setText("$ " + formatMil.format(ivaEquipos));
+		total.setText("$ " + formatMil.format(sumTotal.totalSumaArray(totalEquipos)));
 	}
 	
 	
+
+	public void efectuarComision() {
+		if (realizarDesctoSub.isSelected() == true) {
+			generarDescuentoSub();
+
+		} else if (comisionDirecta.isSelected() == true) {
+			valorEquipoButique();
+
+		}
+	}
 	
 	
+	@FXML
+	private void cerraVentana(){
+	    // get a handle to the stage
+	    Stage stage = (Stage) btn_salir.getScene().getWindow();
+	    // do what you have to do
+	    stage.close();
+	}
+
 }

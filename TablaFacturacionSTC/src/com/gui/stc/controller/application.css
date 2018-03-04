@@ -1,7 +1,8 @@
 /* JavaFX CSS - Leave this comment until you have at least create one rule which uses -fx-Property */
 #layoutPrincipal{
-	-fx-background-color: rgb(180, 76, 77);
-}
+	-fx-background-color: rgb(67, 151, 161);
+	
+	}
 #titulo{
 	 -fx-font-weight: bolder;
 	 -fx-text-fill: #412227;
@@ -12,4 +13,8 @@
 
 	 -fx-font-weight: bolder;
 	 -fx-text-fill: white;
+}
+#logostc{
+	-fx-fill: black;
+	-fx-effect: dropshadow(three-pass-box, white, 5, 0, 0, 0);
 }
