@@ -114,11 +114,9 @@ public class GenerarDescuento {
 
 	public int valorIva(TextField valortxtf, int cantidad) {
 
-		DeclaracionComisiones Telefono1 = new DeclaracionComisiones();
 		int comision = valorComision(valortxtf, cantidad);
 
-		// String valorString = valortxtf.getText();
-		int valorTelefono = Integer.parseInt(valortxtf.getText());
+
 		int valorTelefonoSinIVA = Integer.parseInt(valortxtf.getText());
 		int valorSimCard;
 		int valorMaximoIvaCelular;

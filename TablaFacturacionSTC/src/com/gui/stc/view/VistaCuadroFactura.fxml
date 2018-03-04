@@ -7,6 +7,7 @@
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.Spinner?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
@@ -54,8 +55,8 @@
             </Text>
             <HBox prefHeight="30.0" prefWidth="228.0" spacing="30.0" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
                <children>
-                  <Button fx:id="imprime" alignment="TOP_CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#imprimir" text="MOSTRAR VALORES" />
-                  <Button alignment="TOP_CENTER" contentDisplay="CENTER" mnemonicParsing="false" text="SALIR" />
+                  <Button fx:id="imprime" alignment="TOP_CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#efectuarComision" text="MOSTRAR VALORES" />
+                  <Button fx:id="btn_salir" alignment="TOP_CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#cerraVentana" text="SALIR" />
                </children>
             </HBox>
             <Separator prefWidth="200.0" GridPane.valignment="TOP" />
@@ -120,12 +121,15 @@
                   <Insets bottom="10.0" />
                </padding>
             </Separator>
-            <RadioButton mnemonicParsing="false" text="Comision Sub" GridPane.columnIndex="5" GridPane.halignment="LEFT" GridPane.rowIndex="1">
+            <RadioButton fx:id="realizarDesctoSub" mnemonicParsing="false" selected="true" text="Comision Sub" GridPane.columnIndex="5" GridPane.halignment="LEFT" GridPane.rowIndex="1">
                <GridPane.margin>
                   <Insets left="10.0" />
                </GridPane.margin>
+               <toggleGroup>
+                  <ToggleGroup fx:id="descuentos" />
+               </toggleGroup>
             </RadioButton>
-            <RadioButton mnemonicParsing="false" text="Directo" GridPane.columnIndex="5" GridPane.halignment="LEFT" GridPane.rowIndex="3">
+            <RadioButton fx:id="comisionDirecta" mnemonicParsing="false" text="Directo" toggleGroup="$descuentos" GridPane.columnIndex="5" GridPane.halignment="LEFT" GridPane.rowIndex="3">
                <GridPane.margin>
                   <Insets left="10.0" />
                </GridPane.margin>
