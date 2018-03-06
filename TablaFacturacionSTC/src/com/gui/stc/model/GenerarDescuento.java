@@ -8,26 +8,7 @@ import javafx.scene.control.TextField;
 public class GenerarDescuento {
 	
 	public int  DescuentoComision(TextField  valortxtf, int cantidad ) {
-		try {
-			 if(valortxtf.getText().isEmpty()) {
-				 
-				valortxtf.setText("0");
-			}
-			
-			
-		} catch (Exception e) {
-			// TODO: handle exception
-			e.printStackTrace();
-			Alert errorAdicionando = new Alert(AlertType.ERROR);
-			errorAdicionando.setTitle("Error en Valor");
-			errorAdicionando.setHeaderText("Error al Ingresar los valores");
-			errorAdicionando.setContentText("Por favor revise los valores ingresados"
-					+ "NOTA:"
-					+ "\n -Revise que no tenga espacios en blanco"
-					+ "\n -Que no tenga literales");
-			errorAdicionando.show();
-			
-		}
+		
 		
 		DeclaracionComisiones Telefono1 = new DeclaracionComisiones();
 		

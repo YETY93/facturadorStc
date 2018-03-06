@@ -1,10 +1,16 @@
 package com.gui.stc.model;
 
+import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Alert.AlertType;
 
 public class preciosDirectos {
 	
 	public int  validarIva(TextField valorIngresado, int cantidad) {
+		
+	
+			
+		
 		int valorTelefono = Integer.parseInt(valorIngresado.getText());
 		int valorSimCard = 2000;
 		int valorSimCardIva = 380;

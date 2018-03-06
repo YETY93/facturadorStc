@@ -8,6 +8,7 @@ import java.util.ResourceBundle;
 import com.gui.stc.model.AlertaLimiteFactura;
 import com.gui.stc.model.GenerarDescuento;
 import com.gui.stc.model.SumaArrayValores;
+import com.gui.stc.model.ValidarTxtFvacio;
 import com.gui.stc.model.preciosDirectos;
 import com.gui.stc.model.validarTxtFdEntero;
 
@@ -75,6 +76,8 @@ public class MainController implements Initializable {
 	@FXML
 	private RadioButton comisionDirecta;
 
+	
+	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		// TODO Auto-generated method stub
@@ -90,6 +93,8 @@ public class MainController implements Initializable {
 		SPocho.setEditable(true);
 
 	}
+	
+	
 
 	public void generarDescuentoSub() {
 
@@ -97,8 +102,7 @@ public class MainController implements Initializable {
 		prueba.verificarEntero(valorTelef1);
 
 		GenerarDescuento dcto1 = new GenerarDescuento();
-		
-		
+
 		ArrayList<Integer> descuentos = new ArrayList<Integer>();
 		try {
 			descuentos.add(dcto1.DescuentoComision(valorTelef1, SPuno.getValue()));
@@ -117,8 +121,11 @@ public class MainController implements Initializable {
 			Alert errorAdicionando = new Alert(AlertType.ERROR);
 			errorAdicionando.setTitle("Error en Valor");
 			errorAdicionando.setHeaderText("Error al Ingresar los valores");
-			errorAdicionando.setContentText("Por favor revise los valores ingresados" + "NOTA:"
-					+ "\n -Revise que no tenga espacios en blanco" + "\n -Que no tenga literales");
+			errorAdicionando.setContentText("Por favor revise los valores ingresados" + 
+					"\n NOTA:"+
+					"\n -Revise que no tenga espacios en blanco" +
+					"\n -Que no tenga literales");
+
 			errorAdicionando.show();
 		}
 
@@ -144,8 +151,9 @@ public class MainController implements Initializable {
 			Alert errorNumCero = new Alert(AlertType.INFORMATION);
 			errorNumCero.setTitle("Valor numerico");
 			errorNumCero.setHeaderText("Algun campo vacio o en (0)");
-			errorNumCero.setContentText("Por favor revise los valores ingresados" + "\n NOTA:"
-					+ "\n 	-Revise que la cantidad sellecionada no sea (0)");
+			errorNumCero.setContentText("Por favor revise los valores ingresados" + 
+					"\n NOTA:" +
+					"\n 	-Revise que la cantidad sellecionada no sea (0)");
 			errorNumCero.show();
 		}
 
@@ -167,23 +175,29 @@ public class MainController implements Initializable {
 		total.setText("$ " + formatMil.format(valorEquiposSC));
 
 	}
+	
+	
+
+	// metodo de precio para la oficina venta directa
 
 	public void valorEquipoButique() {
 		preciosDirectos nuevoCalculo = new preciosDirectos();
 
 		SumaArrayValores sumTotal = new SumaArrayValores();
 
+		ArrayList<Integer> totalEquipos = new ArrayList<Integer>();
 		ArrayList<Integer> valorIvaEquipos = new ArrayList<Integer>();
+		ValidarTxtFvacio comprobarVacio = new ValidarTxtFvacio();
 
 		try {
-			valorIvaEquipos.add(nuevoCalculo.validarIva(valorTelef1, SPuno.getValue()));
-			valorIvaEquipos.add(nuevoCalculo.validarIva(valorTelef2, SPdos.getValue()));
-			valorIvaEquipos.add(nuevoCalculo.validarIva(valorTelef3, SPtres.getValue()));
-			valorIvaEquipos.add(nuevoCalculo.validarIva(valorTelef4, SPcuatro.getValue()));
-			valorIvaEquipos.add(nuevoCalculo.validarIva(valorTelef5, SPcinco.getValue()));
-			valorIvaEquipos.add(nuevoCalculo.validarIva(valorTelef6, SPseis.getValue()));
-			valorIvaEquipos.add(nuevoCalculo.validarIva(valorTelef7, SPsiete.getValue()));
-			valorIvaEquipos.add(nuevoCalculo.validarIva(valorTelef8, SPocho.getValue()));
+			totalEquipos.add(comprobarVacio.revisarVacio(valorTelef1));
+			totalEquipos.add(comprobarVacio.revisarVacio(valorTelef2));
+			totalEquipos.add(comprobarVacio.revisarVacio(valorTelef3));
+			totalEquipos.add(comprobarVacio.revisarVacio(valorTelef4));
+			totalEquipos.add(comprobarVacio.revisarVacio(valorTelef5));
+			totalEquipos.add(comprobarVacio.revisarVacio(valorTelef6));
+			totalEquipos.add(comprobarVacio.revisarVacio(valorTelef7));
+			totalEquipos.add(comprobarVacio.revisarVacio(valorTelef8));
 
 		} catch (Exception e) {
 			// TODO: handle exception
@@ -192,32 +206,52 @@ public class MainController implements Initializable {
 			Alert errorAdicionando = new Alert(AlertType.ERROR);
 			errorAdicionando.setTitle("Error en Valor");
 			errorAdicionando.setHeaderText("Error al Ingresar los valores");
-			errorAdicionando.setContentText("Por favor revise los valores ingresados" + "NOTA:"
-					+ "\n -Revise que no tenga espacios en blanco" + "\n -Que no tenga literales");
+			errorAdicionando.setContentText("Por favor revise los valores ingresados" + "\nNOTA:"
+					+ "\n - Revise que no tenga espacios en blanco" + "\n - Que no tenga literales");
 			errorAdicionando.show();
 		}
 
-		ArrayList<Integer> totalEquipos = new ArrayList<Integer>();
-		totalEquipos.add(Integer.parseInt(valorTelef1.getText()));
-		totalEquipos.add(Integer.parseInt(valorTelef2.getText()));
-		totalEquipos.add(Integer.parseInt(valorTelef3.getText()));
-		totalEquipos.add(Integer.parseInt(valorTelef4.getText()));
-		totalEquipos.add(Integer.parseInt(valorTelef5.getText()));
-		totalEquipos.add(Integer.parseInt(valorTelef6.getText()));
-		totalEquipos.add(Integer.parseInt(valorTelef7.getText()));
-		totalEquipos.add(Integer.parseInt(valorTelef8.getText()));
+		valorIvaEquipos.add(nuevoCalculo.validarIva(valorTelef1, SPuno.getValue()));
+		valorIvaEquipos.add(nuevoCalculo.validarIva(valorTelef2, SPdos.getValue()));
+		valorIvaEquipos.add(nuevoCalculo.validarIva(valorTelef3, SPtres.getValue()));
+		valorIvaEquipos.add(nuevoCalculo.validarIva(valorTelef4, SPcuatro.getValue()));
+		valorIvaEquipos.add(nuevoCalculo.validarIva(valorTelef5, SPcinco.getValue()));
+		valorIvaEquipos.add(nuevoCalculo.validarIva(valorTelef6, SPseis.getValue()));
+		valorIvaEquipos.add(nuevoCalculo.validarIva(valorTelef7, SPsiete.getValue()));
+		valorIvaEquipos.add(nuevoCalculo.validarIva(valorTelef8, SPocho.getValue()));
 
+		// Toales de los equipos y el iva
 		sumTotal.totalSumaArray(valorIvaEquipos);
 		sumTotal.totalSumaArray(totalEquipos);
 
 		AlertaLimiteFactura validarTotal = new AlertaLimiteFactura();
 		validarTotal.alertaValor(sumTotal.totalSumaArray(totalEquipos));
+		
+		int TotalEquiposDirectos;
+		TotalEquiposDirectos = (sumTotal.totalSumaArray(totalEquipos));
 
 		int ivaEquipos;
 		ivaEquipos = (sumTotal.totalSumaArray(valorIvaEquipos));
 
 		int subtotalInt;
 		subtotalInt = (sumTotal.totalSumaArray(totalEquipos) - ivaEquipos);
+		
+		
+		if((ivaEquipos == 0)|| (TotalEquiposDirectos == 0) ){
+			
+			subTotal.setText("$ "+ "0");
+			iva.setText("$ "+ "0");
+			total.setText("$ "+ "0");
+			
+			Alert errorNumCero = new Alert(AlertType.INFORMATION);
+			errorNumCero.setTitle("Valor numerico");
+			errorNumCero.setHeaderText("Algun campo vacio o en (0)");
+			errorNumCero.setContentText("Por favor revise los valores ingresados" + 
+					"\n NOTA:" +
+					"\n -Revise que la cantidad sellecionada no sea (0)");
+			errorNumCero.show();
+		}else {
+		
 
 		// FORMATEO DE VALORES A SEPARADOS POR (.)
 		DecimalFormat formatMil = new DecimalFormat("###,###.##");
@@ -225,11 +259,15 @@ public class MainController implements Initializable {
 		// valores mostrados en pantalla
 		subTotal.setText("$ " + formatMil.format(subtotalInt));
 		iva.setText("$ " + formatMil.format(ivaEquipos));
-		total.setText("$ " + formatMil.format(sumTotal.totalSumaArray(totalEquipos)));
+		total.setText("$ " + formatMil.format(TotalEquiposDirectos));
+		
+		}
 	}
 	
-	
 
+	
+	
+	/// boton Mostrar valores
 	public void efectuarComision() {
 		if (realizarDesctoSub.isSelected() == true) {
 			generarDescuentoSub();
@@ -241,12 +279,14 @@ public class MainController implements Initializable {
 	}
 	
 	
+	
+
 	@FXML
-	private void cerraVentana(){
-	    // get a handle to the stage
-	    Stage stage = (Stage) btn_salir.getScene().getWindow();
-	    // do what you have to do
-	    stage.close();
+	private void cerraVentana() {
+		// get a handle to the stage
+		Stage stage = (Stage) btn_salir.getScene().getWindow();
+		// do what you have to do
+		stage.close();
 	}
 
 }
