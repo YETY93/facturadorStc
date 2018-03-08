@@ -1,4 +1,4 @@
-/* JavaFX CSS - Leave this comment until you have at least create one rule which uses -fx-Property */
+/* JavaFX CSS - Leave #ccf5ff; this comment until you have at least create one rule which uses -fx-Property */
 #layoutPrincipal{
 	-fx-background-color: rgb(67, 151, 161);
 	
@@ -13,8 +13,65 @@
 
 	 -fx-font-weight: bolder;
 	 -fx-text-fill: white;
+	 -fx-font-size:13.5px;
+	 -fx-effect: dropshadow(three-pass-box, black, 10, 0, 0, 0);
 }
 #logostc{
 	-fx-fill: black;
 	-fx-effect: dropshadow(three-pass-box, white, 5, 0, 0, 0);
 }
+
+.text-field{
+	-fx-background-radius: 10px;
+	-fx-effect: dropshadow(three-pass-box, #4E5754, 1, 1, 1, 2);
+}
+
+.spinner .increment-arrow-button,
+.spinner .decrement-arrow-button {
+    -fx-body-color: #ff9980;
+}
+
+.spinner .increment-arrow-button:hover,
+.spinner .decrement-arrow-button:hover {
+    /* interpolate color between yellow and red based on first color brightness */
+    -fx-body-color: #66ffff;
+	}
+
+.spinner .increment-arrow-button:hover:pressed,
+.spinner .decrement-arrow-button:hover:pressed,
+.spinner .increment-arrow-button:pressed,
+.spinner .decrement-arrow-button:pressed {
+    /* interpolate color between yellow and red based on first color brightness */
+    -fx-body-color: white;
+}
+.button{
+    -fx-background-color: 
+        linear-gradient(#f2f2f2, #d6d6d6),
+        linear-gradient(#fcfcfc 0%, #d9d9d9 20%, #d6d6d6 100%),
+        linear-gradient(#dddddd 0%, #f6f6f6 50%);
+    -fx-background-radius: 8,7,6;
+    -fx-background-insets: 0,1,2;
+    -fx-text-fill: black;
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 );
+}
+
+.button:hover{
+    -fx-background-color: #668cff;
+}
+
+.radio-button {
+-fx-font-family: "Arial";
+-fx-font-size: 13;
+/*    -fx-text-fill: rgb(255, 255, 255, 0.4);*/
+-fx-text-fill: lightgoldenrodyellow;
+/*    -fx-effect: dropshadow(one-pass-box , rgba(0, 0, 0, 0.6), 0, 0.0 , 0 , 1 );*/
+-fx-border-width: 2px;
+
+}
+
+#subTotal, #iva, #total{
+
+	-fx-font-size: 14;
+	-fx-effect: dropshadow(three-pass-box,  #808080, 1, 1, 1, 2);
+}
+

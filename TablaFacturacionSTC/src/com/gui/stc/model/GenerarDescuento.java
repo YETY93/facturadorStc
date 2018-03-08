@@ -9,6 +9,11 @@ public class GenerarDescuento {
 	
 	public int  DescuentoComision(TextField  valortxtf, int cantidad ) {
 		
+		if(valortxtf.getText().isEmpty()) {
+			valortxtf.setText("0");
+			
+		}
+		
 		
 		DeclaracionComisiones Telefono1 = new DeclaracionComisiones();
 		
